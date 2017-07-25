@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 	public void onBindViewHolder(ViewHolder holder, int position) {
 		Food food  = foods.get(position);
 		holder.tvTitle.setText(food.getTitle());
+		holder.ivImage.setImageResource(R.mipmap.beef_skewers_bbq);
 		holder.tvDescription.setText(food.getDescription());
 	}
 
@@ -57,11 +59,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
 	public class ViewHolder extends RecyclerView.ViewHolder {
 		TextView  tvTitle, tvDescription;
-
+		ImageView  ivImage;
 		public ViewHolder(View itemView) {
 			super(itemView);
 
 			tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
+			ivImage = (ImageView) itemView.findViewById(R.id.iv_image);
 			tvDescription = (TextView) itemView.findViewById(R.id.tv_description);
 
 

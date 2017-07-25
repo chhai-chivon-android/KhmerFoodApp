@@ -13,6 +13,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 	private List<Food> foods;
+	private Food food;
 	private RecyclerView.LayoutManager layoutManager;
 	private FoodAdapter  foodAdapter;
 	private RecyclerView recyclerView;
@@ -25,22 +26,14 @@ public class MainActivity extends AppCompatActivity {
 		recyclerView = (RecyclerView) findViewById(R.id.rv_list_food);
 		layoutManager  = new LinearLayoutManager(getApplicationContext());
 		recyclerView.setLayoutManager(layoutManager);
-		Food food;
-		foods = new ArrayList<>();
-		food  = new Food("Name1","good1");
-		foods.add(food);
-		food = new Food("Name2","good2");
-		foods.add(food);
-		food  = new Food("Name3","good3");
-		foods.add(food);
-		food = new Food("Name4","good4");
-		foods.add(food);
+
+		getData();
 
 		foodAdapter = new FoodAdapter(getApplicationContext(),foods);
 		foodAdapter.setFoodClickListener(new FoodClickListener() {
 			@Override
 			public void onItemClick(Food food) {
-				//getDetail(food);
+				getDetail(food);
 			}
 		});
 		recyclerView.setAdapter(foodAdapter);
@@ -68,8 +61,19 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void getDetail(Food food){
-		Intent intent = new Intent(getApplicationContext(),DetailFoodFragment.class);
-		intent.putExtra("food", String.valueOf(food));
+		Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
+		intent.putExtra("food", food);
 		startActivity(intent);
+	}
+	public void getData(){
+		foods = new ArrayList<>();
+		food  = new Food("Beef Salad","beef_salad.jpg","Good");
+		foods.add(food);
+		food = new Food("Beef Skewers BBQ","beef_skewers_bbq.jpg","Good");
+		foods.add(food);
+		food  = new Food("Crispy chicken Bread","crispy_chicken_bread.jpg","Good");
+		foods.add(food);
+		food = new Food("Grilled Pork Ribs","grilled_pork_ribs.jpg","Good");
+		foods.add(food);
 	}
 }

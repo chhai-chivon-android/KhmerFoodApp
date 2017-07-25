@@ -8,5 +8,5 @@ package com.wordpress.chhaichivon.khmerfoodapp;
  */
 
 public interface FoodClickListener {
-	public void onItemClick(Food food);
+	 void onItemClick(Food food);
 }
